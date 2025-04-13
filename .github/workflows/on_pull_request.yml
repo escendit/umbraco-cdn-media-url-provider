@@ -17,4 +17,4 @@ jobs:
       checks: write
       pull-requests: write
     name: "Package"
-    uses: package.yml@main
+    uses: .github/workflows/package.yml@main
