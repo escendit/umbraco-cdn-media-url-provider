@@ -1,5 +1,4 @@
+workflow: GitHubFlow/v1
 branches:
   main:
-    mode: ContinuousDeployment
-    tag: pre
-tag-prefix: [vV]?
+    label: 'pre'

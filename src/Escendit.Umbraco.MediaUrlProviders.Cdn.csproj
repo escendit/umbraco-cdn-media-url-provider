@@ -7,4 +7,10 @@
     <AdditionalFiles Update="PublicAPI.Unshipped.txt"/>
     <AdditionalFiles Update="PublicAPI.Shipped.txt"/>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md">
+      <Pack>True</Pack>
+      <PackagePath/>
+    </None>
+  </ItemGroup>
 </Project>
