@@ -1,0 +1,77 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: sunday
+      time: "02:00"
+    labels:
+      - github/actions
+  - package-ecosystem: nuget
+    directory: /
+    schedule:
+      interval: daily
+      time: "03:00"
+    labels:
+      - dependencies
+    groups:
+      versioning-updates:
+        update-types:
+          - minor
+          - patch
+        patterns:
+          - "Asp.Versioning.*"
+      versioning-next:
+        update-types:
+          - major
+        patterns:
+          - "Asp.Versioning.*"
+      aspire-updates:
+        update-types:
+          - minor
+          - patch
+        patterns:
+          - "Aspire"
+          - "Aspire.*"
+      aspire-next:
+        update-types:
+          - major
+        patterns:
+          - "Aspire"
+          - "Aspire.*"
+      dotnet-microsoft-updates:
+        update-types:
+          - minor
+          - patch
+        patterns:
+          - "Microsoft.*"
+      dotnet-microsoft-next:
+        update-types:
+          - major
+        patterns:
+          - "Microsoft.*"
+      dotnet-system-updates:
+        update-types:
+          - minor
+          - patch
+        patterns:
+          - "System"
+          - "System.*"
+      dotnet-system-next:
+        update-types:
+          - major
+        patterns:
+          - "System"
+          - "System.*"
+      observability-updates:
+        update-types:
+          - minor
+          - patch
+        patterns:
+          - "OpenTelemetry.*"
+      observability-next:
+        update-types:
+          - major
+        patterns:
+          - "OpenTelemetry.*"

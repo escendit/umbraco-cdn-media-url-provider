@@ -1,0 +1,18 @@
+Escendit.Umbraco.MediaUrlProviders.Cdn.CdnMediaUrlProvider
+Escendit.Umbraco.MediaUrlProviders.Cdn.CdnMediaUrlProvider.CdnMediaUrlProvider(Microsoft.Extensions.Options.IOptionsMonitor<Escendit.Umbraco.MediaUrlProviders.Cdn.CdnMediaUrlProviderOptions!>! options, Umbraco.Cms.Core.PropertyEditors.MediaUrlGeneratorCollection! mediaPathGenerators, Umbraco.Cms.Core.Routing.UriUtility! uriUtility) -> void
+Escendit.Umbraco.MediaUrlProviders.Cdn.CdnMediaUrlProvider.CdnMediaUrlProvider(Microsoft.Extensions.Options.IOptionsMonitor<Escendit.Umbraco.MediaUrlProviders.Cdn.CdnMediaUrlProviderOptions!>! options, Umbraco.Cms.Core.PropertyEditors.MediaUrlGeneratorCollection! mediaPathGenerators, Umbraco.Cms.Core.Routing.UriUtility! uriUtility, Umbraco.Cms.Core.Routing.IUrlAssembler! urlAssembler) -> void
+Escendit.Umbraco.MediaUrlProviders.Cdn.CdnMediaUrlProviderOptions
+Escendit.Umbraco.MediaUrlProviders.Cdn.CdnMediaUrlProviderOptions.CdnMediaUrlProviderOptions() -> void
+Escendit.Umbraco.MediaUrlProviders.Cdn.CdnMediaUrlProviderOptions.RemoveMediaFromPath.get -> bool
+Escendit.Umbraco.MediaUrlProviders.Cdn.CdnMediaUrlProviderOptions.RemoveMediaFromPath.set -> void
+Escendit.Umbraco.MediaUrlProviders.Cdn.CdnMediaUrlProviderOptions.Uri.get -> System.Uri?
+Escendit.Umbraco.MediaUrlProviders.Cdn.CdnMediaUrlProviderOptions.Uri.set -> void
+Escendit.Umbraco.MediaUrlProviders.Cdn.UmbracoBuilderExtensions
+override Escendit.Umbraco.MediaUrlProviders.Cdn.CdnMediaUrlProvider.GetMediaUrl(Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent! content, string! propertyAlias, Umbraco.Cms.Core.Models.PublishedContent.UrlMode mode, string? culture, System.Uri! current) -> Umbraco.Cms.Core.Routing.UrlInfo?
+static Escendit.Umbraco.MediaUrlProviders.Cdn.UmbracoBuilderExtensions.AddCdnMediaUrlProvider(this Umbraco.Cms.Core.DependencyInjection.IUmbracoBuilder! builder) -> Umbraco.Cms.Core.DependencyInjection.IUmbracoBuilder!
+static Escendit.Umbraco.MediaUrlProviders.Cdn.UmbracoBuilderExtensions.AddCdnMediaUrlProvider(this Umbraco.Cms.Core.DependencyInjection.IUmbracoBuilder! builder, System.Action<Escendit.Umbraco.MediaUrlProviders.Cdn.CdnMediaUrlProviderOptions!, System.IServiceProvider!>! configure) -> Umbraco.Cms.Core.DependencyInjection.IUmbracoBuilder!
+static Escendit.Umbraco.MediaUrlProviders.Cdn.UmbracoBuilderExtensions.AddCdnMediaUrlProvider(this Umbraco.Cms.Core.DependencyInjection.IUmbracoBuilder! builder, System.Action<Escendit.Umbraco.MediaUrlProviders.Cdn.CdnMediaUrlProviderOptions!>! configure) -> Umbraco.Cms.Core.DependencyInjection.IUmbracoBuilder!
+static Umbraco.Cms.Core.DependencyInjection.UmbracoBuilderExtensions.AddCdnMediaUrlProvider(this Umbraco.Cms.Core.DependencyInjection.IUmbracoBuilder! builder) -> Umbraco.Cms.Core.DependencyInjection.IUmbracoBuilder!
+static Umbraco.Cms.Core.DependencyInjection.UmbracoBuilderExtensions.AddCdnMediaUrlProvider(this Umbraco.Cms.Core.DependencyInjection.IUmbracoBuilder! builder, System.Action<Escendit.Umbraco.MediaUrlProviders.Cdn.CdnMediaUrlProviderOptions!, System.IServiceProvider!>! configure) -> Umbraco.Cms.Core.DependencyInjection.IUmbracoBuilder!
+static Umbraco.Cms.Core.DependencyInjection.UmbracoBuilderExtensions.AddCdnMediaUrlProvider(this Umbraco.Cms.Core.DependencyInjection.IUmbracoBuilder! builder, System.Action<Escendit.Umbraco.MediaUrlProviders.Cdn.CdnMediaUrlProviderOptions!>! configure) -> Umbraco.Cms.Core.DependencyInjection.IUmbracoBuilder!
+Umbraco.Cms.Core.DependencyInjection.UmbracoBuilderExtensions

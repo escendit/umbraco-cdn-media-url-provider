@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.S3"/>
+    <PackageReference Include="Umbraco.Cms.Web.Common"/>
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Update="PublicAPI.Unshipped.txt"/>
+    <AdditionalFiles Update="PublicAPI.Shipped.txt"/>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,132 @@
+﻿name: "Package"
+on:
+  workflow_call:
+
+jobs:
+  build:
+    name: "NuGet Build(s)"
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            9.0.x
+
+      # Restore Packages
+      - name: .NET Restore
+        run: dotnet restore
+
+      # Build Project
+      - name: .NET Build
+        run: dotnet build --no-restore --configuration Release
+
+      # Test Project(s)
+      - name: .NET Test
+        run: |
+          dotnet test \
+            --collect "XPlat Code Coverage" \
+            --test-adapter-path . \
+            --logger "junit;LogFileName={assembly}-{framework}-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose" \
+            --results-directory test-results
+
+      # Upload Test Results from Testing
+      - name: .NET Test Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: test
+          path: |
+            test-results/
+            !test-results/**/coverage.cobertura.xml
+
+      # Upload Coverage Results from Testing
+      - name: .NET Coverage Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: |
+            test-results/**/coverage.cobertura.xml
+
+      # Pack Project
+      - name: .NET Pack
+        run: dotnet pack --no-build --configuration Release --output packages/
+        if: ${{ github.event_name == 'release'  && github.ref_type == 'tag' || github.event.release.tag_name }}
+
+      # Upload Artifact
+      - name: .NET Upload Artifact For release
+        uses: actions/upload-artifact@v4
+        if: ${{ github.event_name == 'release'  && github.ref_type == 'tag' || github.event.release.tag_name }}
+        with:
+          name: nuget
+          path: packages/
+
+  test-report:
+    name: Test Report
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      # Download Artifact for Test
+      - name: .NET Test Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: test
+
+      # Generate Test Result Report(s)
+      - name: Generate Test Result Report(s)
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: |
+            **/*.xml
+
+  coverage-report:
+    name: Coverage Report
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      # Download Artifact for Test
+      - name: .NET Test Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage
+
+      # Summary
+      - name: Code Coverage Summary Report
+        uses: irongut/CodeCoverageSummary@v1.3.0
+        with:
+          filename: '**/coverage.cobertura.xml'
+          badge: true
+          format: 'markdown'
+          output: 'both'
+
+      # Add PR Comment
+      - name: Add Coverage PR Comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: github.event_name == 'pull_request'
+        with:
+          recreate: true
+          path: code-coverage-results.md
+
+      # Add To Job Summary
+      - name: Write to Job Summary
+        run: cat code-coverage-results.md >> $GITHUB_STEP_SUMMARY
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    needs: build
+    if: ${{ github.event_name == 'release'  && github.ref_type == 'tag' || github.event.release.tag_name }}
+    steps:
+      # Download Artifact from Build
+      - name: .NET Pack Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget
+
+      # Publish Downloaded Artifacts
+      - name: .NET Publish
+        run: dotnet nuget push packages/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"

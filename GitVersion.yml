@@ -1,0 +1,5 @@
+branches:
+  main:
+    mode: ContinuousDeployment
+    tag: pre
+tag-prefix: [vV]?

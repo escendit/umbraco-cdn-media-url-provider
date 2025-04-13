@@ -1,0 +1,20 @@
+name: Check
+on:
+  pull_request:
+    branches:
+      - main
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+  DOTNET_NOLOGO: true
+  REGISTRY: ghcr.io
+
+jobs:
+  package:
+    permissions:
+      contents: read
+      issues: read
+      checks: write
+      pull-requests: write
+    name: "Package"
+    uses: package.yml@main
