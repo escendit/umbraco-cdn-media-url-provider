@@ -3,7 +3,7 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="AWSSDK.S3" Version="3.7.416.9"/>
+    <PackageVersion Include="AWSSDK.S3" Version="3.7.416.12"/>
     <PackageVersion Include="coverlet.collector" Version="6.0.4"/>
     <PackageVersion Include="Escendit.Tools.Branding" Version="1.0.2"/>
     <PackageVersion Include="Escendit.Tools.CodeAnalysis.NetAnalyzers" Version="0.5.1-rc.4"/>
