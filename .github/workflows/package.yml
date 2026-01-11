@@ -1,4 +1,4 @@
-﻿name: "Package"
+name: "Package"
 on:
   workflow_call:
 
@@ -37,7 +37,7 @@ jobs:
 
       # Upload Test Results from Testing
       - name: .NET Test Upload Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: test
           path: |
@@ -46,7 +46,7 @@ jobs:
 
       # Upload Coverage Results from Testing
       - name: .NET Coverage Upload Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: coverage
           path: |
@@ -59,7 +59,7 @@ jobs:
 
       # Upload Artifact
       - name: .NET Upload Artifact For release
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: ${{ github.event_name == 'release'  && github.ref_type == 'tag' || github.event.release.tag_name }}
         with:
           name: nuget
