@@ -1,4 +1,4 @@
-﻿name: "Package"
+name: "Package"
 on:
   workflow_call:
 
@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
