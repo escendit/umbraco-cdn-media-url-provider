@@ -5,7 +5,7 @@
   <ItemGroup>
     <PackageVersion Include="AWSSDK.S3" Version="3.7.416.9"/>
     <PackageVersion Include="coverlet.collector" Version="6.0.4"/>
-    <PackageVersion Include="Escendit.Tools.Branding" Version="1.0.2"/>
+    <PackageVersion Include="Escendit.Tools.Branding" Version="1.2.0"/>
     <PackageVersion Include="Escendit.Tools.CodeAnalysis.NetAnalyzers" Version="0.5.1-rc.4"/>
     <PackageVersion Include="Escendit.Tools.CodeAnalysis.NSubstituteAnalyzers" Version="0.1.0-rc.18"/>
     <PackageVersion Include="Escendit.Tools.CodeAnalysis.SecurityCodeScanAnalyzers" Version="0.5.1-rc.3"/>
